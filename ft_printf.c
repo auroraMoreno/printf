@@ -16,15 +16,15 @@ int ft_printf(const char *format, ...)
 {
     // en format tenemos %c y %c
     va_list args;
+    int len_args;
     va_start(args, format);
-    int l;
 
     // si los args vienen vacios simplemente pintamos lo que haya en format:
     if (!args)
     {
-        l = ft_strlen(format);
-        write(1, args, l);
-        return l;
+        len_args = ft_strlen(format);
+        write(1, args, len_args);
+        return len_args;
     }
     else
     {
@@ -40,25 +40,37 @@ int ft_printf(const char *format, ...)
                 }
                 else if (*format == 'c')
                 {
-                    int c = va_arg(args, int);
+                    char c = (char)va_arg(args, int);
                     write(1, &c, 1);
+
+                }else if(*format == 's'){
+                    char *c = va_arg(args, char*);
+                    int pointer_len = ft_strlen(c);
+                    write(1, c, pointer_len);
                 }
                 else if (*format == 'd')
                 {
-                    int c = va_arg(args, int);
-                    write(1, &c, 1);
+                    int n = va_arg(args, int);
+                    char *c = ft_itoa(n);
+                    int num_len = ft_strlen(c);
+                    write(1, c, num_len);
+                }
+                else if (*format == 'p'){
+                    // esto va a pintar la dirección de memoria en formato hexadecimal 
                 }
             }
             format++;
         }
     }
-    // primero ver que me llegan los placeholders:
-    l = ft_strlen(format);
 
-    write(1, format, l);
+    //conseguir tmb que cuando se pinten los numeros se pinte tmb el resto del texto jaja (con va_copy?)
+    // primero ver que me llegan los placeholders:
+    len_args = ft_strlen(format);
+
+    write(1, format, len_args);
 
     va_end(args);
-    return 0;
+    return len_args;
 }
 
 int main()
@@ -68,8 +80,11 @@ int main()
     //  write(1, message, 7);
 
     // ft_printf(" ");
-    ft_printf("%c y %% y %d", 'a', 4);
-    // printf("Hola %%"); //gestionar si viene solo un porcentaje
+    //ft_printf("%c y %% y %d", 'a', 467);
+    ft_printf("%s", "Lando");
+    printf("\n");
+    //printf("%c y %% y %d", 'a', 467); //gestionar si viene solo un porcentaje
+    printf("%s", "Lando"); 
 
     return 0;
 }
