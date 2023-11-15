@@ -57,6 +57,9 @@ int ft_printf(const char *format, ...)
                 }
                 else if (*format == 'p'){
                     // esto va a pintar la dirección de memoria en formato hexadecimal 
+                    void *p = va_arg(args, void *);
+                    int p_mem_length = ft_strlen(p);
+                    write(1,p,p_mem_length);
                 }
             }
             format++;
@@ -81,8 +84,11 @@ int main()
 
     // ft_printf(" ");
     //ft_printf("%c y %% y %d", 'a', 467);
-    ft_printf("%s", "Lando");
-    printf("\n");
+    //ft_printf("%s", "Lando");
+    /*int value = 0; */
+    void *ptr = 0;
+    //ft_printf("Puntero: %p \n", (void *)ptr);
+    printf("Puntero: %p", ptr);
     //printf("%c y %% y %d", 'a', 467); //gestionar si viene solo un porcentaje
     printf("%s", "Lando"); 
 
