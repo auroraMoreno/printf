@@ -52,18 +52,21 @@ int ft_printf(const char *format, ...)
                     write(1, c, pointer_len);
                 }else if (*format == 'p'){
                     // esto va a pintar la dirección de memoria en formato hexadecimal 
-                    void *p = va_arg(args, void *);
-                    ft_print_ptr(p);
                 }
                 else if (*format == 'd')
                 {
+                    //solo le va a venir en base 10
                     int n = va_arg(args, int);
                     char *c = ft_itoa(n);
                     int num_len = ft_strlen(c);
                     write(1, c, num_len);
                 }else if(*format == 'i'){
+                    // le puede venir en cualquier formato 
+                    int n = va_arg(args, int);
+                    ft_putnbr_fd(n,1);
                     
                 }else if(*format == 'u'){
+                    
                     
                 }else if(*format == 'x'){
                     
@@ -87,19 +90,21 @@ int ft_printf(const char *format, ...)
 
 int main()
 {
-    // const char *message = "Hello";
-    //  const int numero = 10;
-    //  write(1, message, 7);
+    int zero = 0;
+    int negativeLargeNumber = -987654321;
+    int octalNumber2 = 0123;            // Octal representation (83 in decimal)
+    int hexadecimalNumber2 = 0xABCD;  
 
-    // ft_printf(" ");
-    //ft_printf("%c y %% y %d", 'a', 467);
-    //ft_printf("%s", "Lando");
-    /*int value = 0; */
-    void *ptr = 42;
-    //ft_printf("Puntero: %p \n", (void *)ptr);
-    printf("Puntero: %p", ptr);
-    //printf("%c y %% y %d", 'a', 467); //gestionar si viene solo un porcentaje
-    //printf("%s", "Lando"); 
+    
+
+    printf("Zero: %i\n", zero);
+    ft_printf("Zero: %i\n", zero);
+    printf("Negative Large Number: %i\n", negativeLargeNumber);
+    ft_printf("Negative Large Number: %i\n", negativeLargeNumber);
+    printf("Octal: %i\n", octalNumber2);
+    ft_printf("Octal: %i\n", octalNumber2);
+    printf("Hexadecimal: %i\n", hexadecimalNumber2);
+    ft_printf("Hexadecimal: %i\n", hexadecimalNumber2);
 
     return 0;
 }

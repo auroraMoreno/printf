@@ -25,17 +25,17 @@ void ft_process_digit(int num){
 
 //dividir el numero entre 16 hasta que sea mas pequeño 
 //quedarse con el resto 
-void ft_put_ptr(uintptr_t ptr){
+void ft_put_ptr(size_t ptr){
     if(ptr >= 16){
         ft_put_ptr(ptr / 16);
-        ft_process_digit(ptr / 16);
+        ft_process_digit(ptr % 16); //cogemos el modulo para: 
     }else{
         //si es menor a 16 empezar a procesarlo
         ft_process_digit(ptr);
     }
 }
 
-void ft_print_ptr(uintptr_t ptr){
+void ft_print_ptr(size_t ptr){
 
     if(ptr == 0){
          write(1, "0", 1);
