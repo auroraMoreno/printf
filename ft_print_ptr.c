@@ -6,7 +6,7 @@
 /*   By: aumoreno <aumoreno@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 06:19:32 by aumoreno          #+#    #+#             */
-/*   Updated: 2023/11/16 11:41:09 by aumoreno         ###   ########.fr       */
+/*   Updated: 2023/11/23 11:53:19 by aumoreno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ void ft_print_ptr(size_t ptr){
          write(1, "0", 1);
     }else{
         //pintar su hexadecimal 
+        write(1, "0x", 2);
         ft_put_ptr(ptr);
     }
 

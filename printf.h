@@ -6,7 +6,7 @@
 /*   By: aumoreno <aumoreno@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 06:23:49 by aumoreno          #+#    #+#             */
-/*   Updated: 2023/11/16 11:41:56 by aumoreno         ###   ########.fr       */
+/*   Updated: 2023/11/23 11:32:06 by aumoreno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,4 +17,4 @@
 
 #include "libft/libft.h"
 
-void ft_print_ptr(uintptr_t ptr);
+void ft_print_ptr(size_t ptr);
