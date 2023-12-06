@@ -52,7 +52,7 @@ int ft_printf(const char *format, ...)
                     void *p = va_arg(args, void*);
                     ft_print_ptr((size_t)p);
                 }
-                else if (*format == 'd')
+                else if (*format == 'd') // esto se puede tratar como %i 
                 {
                     //solo le va a venir en base 10
                     int n = va_arg(args, int);
@@ -65,11 +65,15 @@ int ft_printf(const char *format, ...)
                     ft_putnbr_fd(n,1);
                     
                 }else if(*format == 'u'){
-                    
+                    unsigned int u = va_arg(args, unsigned int);
+                    ft_put_unsigned(u);
                     
                 }else if(*format == 'x'){
-                    
+                    unsigned int x = va_arg(args, unsigned int);
+                    ft_print_lower_hex(x);
+
                 }else if(*format == 'X'){
+
                     
                 }
             }
@@ -88,15 +92,26 @@ int ft_printf(const char *format, ...)
 
 int main()
 {
-    
+    // PRUEBAS %u
+    /*
+    printf("%u\n", 4294967295U);
+    ft_printf("%u", 4294967295U);
+    */
+
     //pruebas %p:
+    /*
     int value = 67899;
     int v2 = 481;
     printf("%p\n", &value);
     ft_printf("%p", &value);
     
     printf("\n%p\n", &v2);
-    ft_printf("%p", &v2);
+    ft_printf("%p", &v2);  //FIX EL 0x, TOUPPERCASE */
+
+    // PRUEBA %X: 
+    printf("%x\n", 824563);
+    ft_printf("%x", 824563);
+
     //pruebas %i:
     /*
     int zero = 0;

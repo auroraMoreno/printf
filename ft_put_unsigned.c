@@ -1,23 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   printf.h                                           :+:      :+:    :+:   */
+/*   ft_put_unsigned.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aumoreno <aumoreno@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aumoreno < aumoreno@student.42madrid.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/13 06:23:49 by aumoreno          #+#    #+#             */
-/*   Updated: 2023/11/23 11:32:06 by aumoreno         ###   ########.fr       */
+/*   Created: 2023/12/06 12:07:32 by aumoreno          #+#    #+#             */
+/*   Updated: 2023/12/06 12:07:32 by aumoreno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-#include <stdio.h> 
-#include <stdarg.h>
-#include <stdint.h>
+#include "printf.h"
 
-#include "libft/libft.h"
-
-void ft_print_ptr(size_t ptr);
-void ft_put_unsigned(unsigned int u);
-
-void ft_print_lower_hex(unsigned int x);
+void ft_put_unsigned(unsigned int u){
+    
+    if(u <= 9){
+        ft_putchar_fd(u + '0', 1);
+    }else{
+        ft_put_unsigned(u / 10);
+        ft_put_unsigned(u % 10);
+    }
+}
