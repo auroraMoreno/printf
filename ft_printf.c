@@ -73,9 +73,11 @@ int ft_printf(const char *format, ...)
                     ft_print_lower_hex(x);
 
                 }else if(*format == 'X'){
-
-                    
+                    unsigned int x_upper = va_arg(args, unsigned int);
+                    ft_print_upper_hex(x_upper);
                 }
+            }else{
+                write(1, format, 1);
             }
             format++;
     }
@@ -84,7 +86,7 @@ int ft_printf(const char *format, ...)
     // primero ver que me llegan los placeholders:
     len_args = ft_strlen(format);
 
-    write(1, format, len_args); // ???
+    write(1, format, len_args); //
 
     va_end(args);
     return len_args;
@@ -109,8 +111,8 @@ int main()
     ft_printf("%p", &v2);  //FIX EL 0x, TOUPPERCASE */
 
     // PRUEBA %X: 
-    printf("%x\n", 824563);
-    ft_printf("%x", 824563);
+    printf("Prueba: %X\n", 824563);
+    ft_printf("Prueba; %X", 824563);
 
     //pruebas %i:
     /*
