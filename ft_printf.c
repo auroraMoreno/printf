@@ -17,6 +17,7 @@ int ft_printf(const char *format, ...)
     va_list args;
     int len_args;
     va_start(args, format);
+
         while (*format)
         {
             if (*format == '%')
@@ -34,34 +35,37 @@ int ft_printf(const char *format, ...)
 
                 }else if(*format == 's'){
                     // put_str_ (libft / utils )
-                    char *c = va_arg(args, char*);
+                    /*char *c = va_arg(args, char*);
                     int pointer_len = ft_strlen(c);
-                    write(1, c, pointer_len);
+                    write(1, c, pointer_len); */
+					ft_putstr_fd(va_arg(args, char*),1);
                 }else if (*format == 'p'){
                     void *p = va_arg(args, void*);
                     ft_print_ptr((size_t)p);
                 }
-                else if (*format == 'd' ) 
+                else if (*format == 'd' || *format == 'i') 
                 {
-                    int n = va_arg(args, int);
+                    /*int n = va_arg(args, int);
                     char *c = ft_itoa(n);
                     int num_len = ft_strlen(c);
-                    write(1, c, num_len);
-                }else if(*format == 'i'){
-                    int n = va_arg(args, int);
-                    ft_putnbr_fd(n,1);
-                    
-                }else if(*format == 'u'){
-                    unsigned int u = va_arg(args, unsigned int);
-                    ft_put_unsigned(u);
-                    
-                }else if(*format == 'x'){
-                    unsigned int x = va_arg(args, unsigned int);
-                    ft_print_lower_hex(x);
+                    write(1, c, num_len);*/
+					ft_putnbr_fd(va_arg(args, int), 1);
+                }
+				else if(*format == 'i')
+				{
 
-                }else if(*format == 'X'){
-                    unsigned int x_upper = va_arg(args, unsigned int);
-                    ft_print_upper_hex(x_upper);
+                }
+				else if(*format == 'u')
+				{
+                    ft_put_unsigned(va_arg(args, unsigned int));
+                }
+				else if(*format == 'x')
+				{
+                    ft_print_lower_hex(va_arg(args, unsigned int));
+                }
+				else if(*format == 'X')
+				{
+                    ft_print_upper_hex(va_arg(args, unsigned int));
                 }
             }else{
                 write(1, format, 1);
@@ -69,49 +73,19 @@ int ft_printf(const char *format, ...)
             format++;
     }
     len_args = ft_strlen(format);
-    write(1, format, len_args); //
+    write(1, format, len_args); 
     va_end(args);
     return len_args;
 }
 
-int main()
-{
-    // PRUEBAS %u
-    /*
-    printf("%u\n", 4294967295U);
-    ft_printf("%u", 4294967295U);
-    */
+int main (){
 
-    //pruebas %p:
-    /*
-    int value = 67899;
-    int v2 = 481;
-    printf("%p\n", &value);
-    ft_printf("%p", &value);
-    
-    printf("\n%p\n", &v2);
-    ft_printf("%p", &v2);  //FIX EL 0x, TOUPPERCASE */
+	/*%s*/
+	char *s = "Lando Norris";
+	printf("Func ORG: %s\n", s);
+	ft_printf("Func ORG: %s", s);
 
-    // PRUEBA %X: 
-    printf("Prueba: %X\n", 824563);
-    ft_printf("Prueba; %X", 824563);
-
-    //pruebas %i:
-    /*
-    int zero = 0;
-    int negativeLargeNumber = -987654321;
-    int octalNumber2 = 0123;            // Octal representation (83 in decimal)
-    int hexadecimalNumber2 = 0xABCD;  
-
-    printf("Zero: %i\n", zero);
-    ft_printf("Zero: %i\n", zero);
-    printf("Negative Large Number: %i\n", negativeLargeNumber);
-    ft_printf("Negative Large Number: %i\n", negativeLargeNumber);
-    printf("Octal: %i\n", octalNumber2);
-    ft_printf("Octal: %i\n", octalNumber2);
-    printf("Hexadecimal: %i\n", hexadecimalNumber2);
-    ft_printf("Hexadecimal: %i\n", hexadecimalNumber2);
-    */
-   
-    return 0;
+	/*%d y %i*/
+	
+	return 0;
 }
