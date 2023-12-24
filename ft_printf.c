@@ -30,8 +30,9 @@ int ft_printf(const char *format, ...)
                 else if (*format == 'c')
                 { 
                     // put_char
-                    char c = (char)va_arg(args, int);
-                    write(1, &c, 1);
+                   /* char c = (char)va_arg(args, int);
+                    write(1, &c, 1); */
+ft_putchar_fd(va_arg(args, int),1)
 
                 }else if(*format == 's'){
                     // put_str_ (libft / utils )
