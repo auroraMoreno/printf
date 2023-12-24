@@ -35,13 +35,9 @@ int ft_printf(const char *format, ...)
 
                 }else if(*format == 's'){
                     // put_str_ (libft / utils )
-                    /*char *c = va_arg(args, char*);
-                    int pointer_len = ft_strlen(c);
-                    write(1, c, pointer_len); */
 					ft_putstr_fd(va_arg(args, char*),1);
                 }else if (*format == 'p'){
-                    void *p = va_arg(args, void*);
-                    ft_print_ptr((size_t)p);
+                   ft_print_ptr((size_t)va_arg(args,void*));
                 }
                 else if (*format == 'd' || *format == 'i') 
                 {
