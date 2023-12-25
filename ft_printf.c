@@ -25,14 +25,13 @@ int ft_printf(const char *format, ...)
                 format++;
                 if (*format == '%')
                 {
-                    write(1, format, 1);
+                    //write(1, format, 1);
+                    ft_putchar_fd(*format,1);
+
                 }
                 else if (*format == 'c')
                 { 
-                    // put_char
-                   /* char c = (char)va_arg(args, int);
-                    write(1, &c, 1); */
-ft_putchar_fd(va_arg(args, int),1)
+                    ft_putchar_fd(va_arg(args, int),1);
 
                 }else if(*format == 's'){
                     // put_str_ (libft / utils )
@@ -77,12 +76,33 @@ ft_putchar_fd(va_arg(args, int),1)
 
 int main (){
 
+    /*%%*/
+    printf("Func ORG: %%\n");
+	ft_printf("Func ORG: %%\n");
+
+    /*%c*/
+    char c = 'L';
+    printf("Func ORG: %c\n", c);
+	ft_printf("Func ORG: %c\n", c);
+
 	/*%s*/
 	char *s = "Lando Norris";
 	printf("Func ORG: %s\n", s);
-	ft_printf("Func ORG: %s", s);
+	ft_printf("Func ORG: %s\n", s);
 
 	/*%d y %i*/
+    
+    printf("Caso %i org: %i\n", 19, 012);
+    ft_printf("Caso %i : %i\n", 19, 012);
+
+    printf("Caso %i (%%i): %i\n", 20, 0xA);
+    ft_printf("Caso %i (%%i): %i\n", 20, 0xA);
+
+    printf("Caso %i (%%i): %i\n", 21, -012);
+    ft_printf("Caso %i (%%i): %i\n", 21, -012);
+
+    printf("Caso %i (%%i): %i\n", 22, -0xA);
+    ft_printf("Caso %i (%%i): %i\n", 22, -0xA);
 	
 	return 0;
 }
