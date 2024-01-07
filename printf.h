@@ -19,7 +19,6 @@
 
 void ft_print_ptr(size_t ptr);
 void ft_put_unsigned(unsigned int u);
-void ft_print_lower_hex(unsigned int x);
-void ft_print_upper_hex(unsigned int x);
+void ft_print_hex(unsigned int x, unsigned int n);
 
 

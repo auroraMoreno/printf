@@ -25,9 +25,7 @@ int ft_printf(const char *format, ...)
                 format++;
                 if (*format == '%')
                 {
-                    //write(1, format, 1);
                     ft_putchar_fd(*format,1);
-
                 }
                 else if (*format == 'c')
                 { 
@@ -41,15 +39,7 @@ int ft_printf(const char *format, ...)
                 }
                 else if (*format == 'd' || *format == 'i') 
                 {
-                    /*int n = va_arg(args, int);
-                    char *c = ft_itoa(n);
-                    int num_len = ft_strlen(c);
-                    write(1, c, num_len);*/
 					ft_putnbr_fd(va_arg(args, int), 1);
-                }
-				else if(*format == 'i')
-				{
-
                 }
 				else if(*format == 'u')
 				{
@@ -57,11 +47,12 @@ int ft_printf(const char *format, ...)
                 }
 				else if(*format == 'x')
 				{
-                    ft_print_lower_hex(va_arg(args, unsigned int));
+            
+                    ft_print_hex(va_arg(args, unsigned int),0);
                 }
 				else if(*format == 'X')
 				{
-                    ft_print_upper_hex(va_arg(args, unsigned int));
+                    ft_print_hex(va_arg(args, unsigned int),1);
                 }
             }else{
                 write(1, format, 1);
@@ -75,6 +66,11 @@ int ft_printf(const char *format, ...)
 }
 
 int main (){
+
+
+    /*sin %*/
+    printf("Func ORG:\n");
+	ft_printf("Func ORG:\n");
 
     /*%%*/
     printf("Func ORG: %%\n");
@@ -92,6 +88,33 @@ int main (){
 
 	/*%d y %i*/
     
+    printf("Caso %d (%%d): %d\n", 1, 42);
+    ft_printf("Caso %d (%%d): %d\n", 1, 42);
+
+    printf("Caso %d (%%d): %d\n", 2, -123);
+    ft_printf("Caso %d (%%d): %d\n", 2, -123);
+
+    printf("Caso %d (%%d): %d\n", 3, 789);
+    ft_printf("Caso %d (%%d): %d\n", 3, 789);
+
+    printf("Caso %d (%%d): %d\n", 4, 27);
+    ft_printf("Caso %d (%%d): %d\n", 4, 27);
+
+    printf("Caso %d (%%d): %d\n", 5, 12345);
+    ft_printf("Caso %d (%%d): %d\n", 5, 12345);
+
+    printf("Caso %d (%%d): %d\n", 6, 987);
+    ft_printf("Caso %d (%%d): %d\n", 6, 987);
+
+    printf("Caso %d (%%d): %d\n", 7, 654);
+    ft_printf("Caso %d (%%d): %d\n", 7, 654);
+
+    printf("Caso %d (%%d): %d\n", 8, 2147483647);
+    ft_printf("Caso %d (%%d): %d\n", 8, 2147483647);
+
+    //printf("Caso %d (%%d): %d\n", 9, -2147483648);
+    ft_printf("Caso %d (%%d): %d\n", 9, -2147483648);
+    
     printf("Caso %i org: %i\n", 19, 012);
     ft_printf("Caso %i : %i\n", 19, 012);
 
@@ -103,6 +126,40 @@ int main (){
 
     printf("Caso %i (%%i): %i\n", 22, -0xA);
     ft_printf("Caso %i (%%i): %i\n", 22, -0xA);
+
+    /*%X y %x*/
+
+    // Cases for %x (lowercase hexadecimal)
+    printf("Caso %d (%%x): %x\n", 1, 255);
+    ft_printf("Caso %d (%%x): %x\n", 1, 255);
+
+    printf("Caso %d (%%x): %x\n", 2, 0xABCD);
+    ft_printf("Caso %d (%%x): %x\n", 2, 0xABCD);
+
+    printf("Caso %d (%%x): %x\n", 3, 42);
+    ft_printf("Caso %d (%%x): %x\n", 3, 42);
+
+    printf("Caso %d (%%x): %x\n", 4, 16);
+    ft_printf("Caso %d (%%x): %x\n", 4, 16);
+
+    printf("Caso %d (%%x): %x\n", 5, 65535);
+    ft_printf("Caso %d (%%x): %x\n", 5, 65535);
+
+    // Cases for %X (uppercase hexadecimal)
+    printf("Caso %d (%%X): %X\n", 6, 255);
+    ft_printf("Caso %d (%%X): %X\n", 6, 255);
+
+    printf("Caso %d (%%X): %X\n", 7, 0xABCD);
+    ft_printf("Caso %d (%%X): %X\n", 7, 0xABCD);
+
+    printf("Caso %d (%%X): %X\n", 8, 42);
+    ft_printf("Caso %d (%%X): %X\n", 8, 42);
+
+    printf("Caso %d (%%X): %X\n", 9, 16);
+    ft_printf("Caso %d (%%X): %X\n", 9, 16);
+
+    printf("Caso %d (%%X): %X\n", 10, 65535);
+    ft_printf("Caso %d (%%X): %X\n", 10, 65535);
 	
 	return 0;
 }

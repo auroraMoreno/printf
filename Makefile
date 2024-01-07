@@ -11,15 +11,14 @@
 # **************************************************************************** #
 
 NAME  = libftprint.a
-LIBFT_PATH = ./libft
-LIBFT = $(LIBFT_PATH)/libft.a
+LIBFT_PATH= ./libft/libft.a
 
 CC = gcc
 CFLAGS = -Wall -Werror -Wextra 
-INCLUDE  = printf.h 
+INCLUDE  = printf.h
 
 SRCS = ft_printf.c ft_put_unsigned.c ft_print_upper_hex.c ft_print_lower_hex.c 
-	   ft_print_ptr.c 
+	   ft_print_ptr.c
 
 OBJS = $(SRCS:.c=.o)
 
