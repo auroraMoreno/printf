@@ -17,8 +17,15 @@
 
 #include "libft/libft.h"
 
-void ft_print_ptr(size_t ptr);
-void ft_put_unsigned(unsigned int u);
-void ft_print_hex(unsigned int x, unsigned int n);
+int ft_printf(char const *format, ...);
+int ft_print_ptr(size_t ptr);
+int ft_put_unsigned(unsigned int u);
+int ft_print_hex(unsigned int x, unsigned int n);
+size_t	ft_strlen(const char *s);
+int	ft_putchar(int c);
+int	ft_putstr(char *s);
+int	ft_putnbr(int n);
+
+
 
 

@@ -12,37 +12,60 @@
 
 #include "printf.h"
 
-//distincion entre digitios del 0-9 y del 10-15 
-
-void ft_process_digit(int num){
-    if(num <= 9){
-        ft_putchar_fd(num + '0',1); //hacer conversión a ASCII 
-    }else{
-        //aqui es cuando los numeros empiezan a ser letras 
-        ft_putchar_fd((num - 10) + 'a',1);
-    }
+void	ft_process_digit(int num)
+{
+	if (num <= 9)
+	{
+		ft_putchar(num + '0'); 
+	}
+	else
+	{
+		ft_putchar((num - 10) + 'A');
+	}
 }
 
-//dividir el numero entre 16 hasta que sea mas pequeño 
-//quedarse con el resto 
-void ft_put_ptr(size_t ptr){
-    if(ptr >= 16){
-        ft_put_ptr(ptr / 16);
-        ft_process_digit(ptr % 16); //cogemos el modulo para: 
-    }else{
-        //si es menor a 16 empezar a procesarlo
-        ft_process_digit(ptr);
-    }
+void	ft_put_ptr(size_t ptr)
+{
+	if (ptr >= 16)
+	{
+		ft_put_ptr(ptr / 16);
+		ft_process_digit(ptr % 16);
+	}
+	else
+	{
+		ft_process_digit(ptr);
+	}
 }
 
-void ft_print_ptr(size_t ptr){
+int	ft_ptr_len(size_t ptr)
+{
+	int	len;
 
-    if(ptr == 0){
-         write(1, "0", 1);
-    }else{
-        //pintar su hexadecimal 
-        write(1, "00", 2);
-        ft_put_ptr(ptr);
-    }
+	len = 0;
+	while (ptr != 0)
+	{
+		len++;
+		ptr = ptr / 16;
+	}
+	return (len);
+}
 
+int	ft_print_ptr(size_t ptr)
+{
+	int	len;
+	int	w;
+
+	len = 0;
+	if (ptr == 0)
+	{
+		len += write(1, "00000000", 8);
+	}
+	else
+	{
+		w = write(1, "00", 2);
+		ft_put_ptr(ptr);
+		len += ft_ptr_len(ptr);
+		len += w;
+	}
+	return (len); 
 }

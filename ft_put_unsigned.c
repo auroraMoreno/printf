@@ -12,12 +12,19 @@
 
 #include "printf.h"
 
-void ft_put_unsigned(unsigned int u){
-    
-    if(u <= 9){
-        ft_putchar_fd(u + '0', 1);
-    }else{
-        ft_put_unsigned(u / 10);
-        ft_put_unsigned(u % 10);
-    }
+int	ft_put_unsigned(unsigned int u)
+{
+	int	len;
+
+	len = 0;
+	if (u <= 9)
+	{
+		len += ft_putchar(u + '0');
+	}
+	else
+	{
+		len += ft_put_unsigned(u / 10);
+		len += ft_put_unsigned(u % 10);
+	}
+	return (len);
 }

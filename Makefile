@@ -10,29 +10,19 @@
 #                                                                              #
 # **************************************************************************** #
 
-NAME  = libftprint.a
-LIBFT_PATH= ./libft/libft.a
-
+NAME = libftprintf.a
 CC = gcc
 CFLAGS = -Wall -Werror -Wextra 
-INCLUDE  = printf.h
 
-SRCS = ft_printf.c ft_put_unsigned.c ft_print_upper_hex.c ft_print_lower_hex.c 
-	   ft_print_ptr.c
+SRCS = ft_printf.c ft_put_unsigned.c ft_print_hex.c \
+	   ft_print_ptr.c ft_printf_utils.c
 
 OBJS = $(SRCS:.c=.o)
 
-$(NAME): $(LIBFT) $(OBJS) $(INCLUDE)
+$(NAME): $(OBJS)
 			ar -rsc $(NAME) $(OBJS)
 
 all : $(NAME)
-
-%.o : %.c
-		@$(CC) $(CFLAGS) -c -o $@ $<
-
-
-libft/libft.a : 
-	$(MAKE) -C libft -f Makefile
 
 clean:
 	rm -f $(OBJS)
