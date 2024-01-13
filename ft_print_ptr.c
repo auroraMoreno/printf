@@ -6,11 +6,11 @@
 /*   By: aumoreno <aumoreno@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 06:19:32 by aumoreno          #+#    #+#             */
-/*   Updated: 2024/01/13 09:20:36 by aumoreno         ###   ########.fr       */
+/*   Updated: 2024/01/13 09:45:28 by aumoreno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf.h"
+#include "ft_printf.h"
 
 void	ft_process_digit(int num)
 {
@@ -20,7 +20,7 @@ void	ft_process_digit(int num)
 	}
 	else
 	{
-		ft_putchar((num - 10) + 'A');
+		ft_putchar((num - 10) + 'a');
 	}
 }
 
@@ -29,7 +29,7 @@ void	ft_put_ptr(size_t ptr)
 	if (ptr >= 16)
 	{
 		ft_put_ptr(ptr / 16);
-		ft_process_digit(ptr % 16);
+		ft_put_ptr(ptr % 16);
 	}
 	else
 	{
@@ -50,22 +50,20 @@ int	ft_ptr_len(size_t ptr)
 	return (len);
 }
 
-int	ft_print_ptr(size_t ptr)
+int	ft_print_ptr(unsigned long ptr)
 {
 	int	len;
-	int	w;
 
 	len = 0;
+	len += write(1, "0x", 2);
 	if (ptr == 0)
 	{
-		len += write(1, "0x0", 3);
+		len += write(1, "0", 1);
 	}
 	else
 	{
-		w = write(1, "00", 2);
 		ft_put_ptr(ptr);
 		len += ft_ptr_len(ptr);
-		len += w;
 	}
 	return (len);
 }

@@ -6,11 +6,11 @@
 /*   By: aumoreno <aumoreno@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 21:09:26 by aumoreno          #+#    #+#             */
-/*   Updated: 2024/01/13 09:16:14 by aumoreno         ###   ########.fr       */
+/*   Updated: 2024/01/13 10:42:06 by aumoreno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf.h"
+#include "ft_printf.h"
 
 int	ft_format_processer(const char format, va_list args)
 {
@@ -21,7 +21,7 @@ int	ft_format_processer(const char format, va_list args)
 	else if (format == 's')
 		return (ft_putstr(va_arg(args, char *)));
 	else if (format == 'p')
-		return (ft_print_ptr((size_t)va_arg(args, void *)));
+		return (ft_print_ptr((unsigned long)va_arg(args, void *)));
 	else if (format == 'd' || format == 'i')
 		return (ft_putnbr(va_arg(args, int)));
 	else if (format == 'u')
@@ -30,7 +30,7 @@ int	ft_format_processer(const char format, va_list args)
 		return (ft_print_hex(va_arg(args, unsigned int), 0));
 	else if (format == 'X')
 		return (ft_print_hex(va_arg(args, unsigned int), 1));
-	return (1);
+	return (0);
 }
 
 int	ft_printf(const char *format, ...)

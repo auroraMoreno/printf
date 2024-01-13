@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_put_unsigned.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aumoreno < aumoreno@student.42madrid.co    +#+  +:+       +#+        */
+/*   By: aumoreno <aumoreno@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 12:07:32 by aumoreno          #+#    #+#             */
-/*   Updated: 2023/12/06 12:07:32 by aumoreno         ###   ########.fr       */
+/*   Updated: 2024/01/13 09:27:44 by aumoreno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf.h"
+#include "ft_printf.h"
 
 int	ft_put_unsigned(unsigned int u)
 {
