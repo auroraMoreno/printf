@@ -6,7 +6,7 @@
 /*   By: aumoreno <aumoreno@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 06:19:32 by aumoreno          #+#    #+#             */
-/*   Updated: 2023/11/23 11:53:19 by aumoreno         ###   ########.fr       */
+/*   Updated: 2024/01/13 09:20:36 by aumoreno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	ft_process_digit(int num)
 {
 	if (num <= 9)
 	{
-		ft_putchar(num + '0'); 
+		ft_putchar(num + '0');
 	}
 	else
 	{
@@ -58,7 +58,7 @@ int	ft_print_ptr(size_t ptr)
 	len = 0;
 	if (ptr == 0)
 	{
-		len += write(1, "00000000", 8);
+		len += write(1, "0x0", 3);
 	}
 	else
 	{
@@ -67,5 +67,5 @@ int	ft_print_ptr(size_t ptr)
 		len += ft_ptr_len(ptr);
 		len += w;
 	}
-	return (len); 
+	return (len);
 }

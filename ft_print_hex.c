@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_print_hex.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aumoreno < aumoreno@student.42madrid.co    +#+  +:+       +#+        */
+/*   By: aumoreno <aumoreno@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 21:11:39 by aumoreno          #+#    #+#             */
-/*   Updated: 2023/12/26 21:11:39 by aumoreno         ###   ########.fr       */
+/*   Updated: 2024/01/13 09:21:28 by aumoreno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int	ft_put_hex(unsigned int x, unsigned int n)
 	if (x >= 16)
 	{
 		len += ft_put_hex (x / 16, n);
-		len += ft_process_hex (x % 16, n); 
+		len += ft_process_hex (x % 16, n);
 	}
 	else
 	{
@@ -65,5 +65,5 @@ int	ft_print_hex(unsigned int x, unsigned int n)
 	{
 		len = ft_put_hex (x, n);
 	}
-	return (len); 
+	return (len);
 }
